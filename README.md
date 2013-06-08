@@ -3,15 +3,27 @@ backbone-form_builder
 
 `form_builder` makes creating Backbone forms super easy.
 
-I've only tested it with CoffeeScript, but it should work with
-javascript templates also.
+It's designed to work with CoffeeScript templates and
+I've tested it with `haml-coffee`, `skim`, and `eco`.
+Let me know if you use it with a different environment and I'll
+add it to the examples.
 
 Usage
 -----
 
 Require `form_builder` after backbone.
 
-Using `skim`:
+Using [`haml-coffee`](https://github.com/netzpirat/haml-coffee):
+
+```hamlc
+!= form_for @current_user, autocomplete: 'off', (f) ->
+  != f.text_field 'username', autocapitalize: 'off'
+  != f.password_field 'password'
+
+  != f.submit "Sign In"
+```
+
+Using [`skim`](https://github.com/jfirebaugh/skim):
 
 ```skim
 == form_for @current_user, autocomplete: 'off', (f) ->
@@ -21,8 +33,7 @@ Using `skim`:
   == f.submit "Sign In"
 ```
 
-
-Using `eco`:
+Using [`eco`](https://github.com/sstephenson/eco):
 
 ```eco
 <%- form_for @current_user, autocomplete: 'off', (f) -> %>
