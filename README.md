@@ -68,8 +68,6 @@ You can customize html attributes by passing options:
   == f.text_field 'username', id: 'username'
 ```
 
-The default `id` 
-
 `select` takes a `choices` object to create a series of `<option>` tags:
 
 ```skim
