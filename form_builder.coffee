@@ -1,6 +1,5 @@
 class Backbone.FormBuilder
-  constructor: (model) ->
-    @model = model
+  constructor: (@model) ->
 
   text_field:     (attribute, options) -> @input 'text',     attribute, options
   password_field: (attribute, options) -> @input 'password', attribute, options
