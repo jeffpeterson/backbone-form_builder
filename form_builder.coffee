@@ -7,7 +7,7 @@ class Backbone.FormBuilder
   text_field:     (attribute, options) -> @input 'text',     attribute, options
   password_field: (attribute, options) -> @input 'password', attribute, options
   text_area:      (attribute, options) -> @input 'textarea', attribute, options
-
+  checkbox_tag:   (attribute, options) -> @input 'checkbox', attribute, options
 
   label:          (attribute, body = attribute, options = {}) ->
     _.defaults options,
