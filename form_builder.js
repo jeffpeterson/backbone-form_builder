@@ -21,7 +21,7 @@
       return this.input('textarea', attribute, options);
     };
 
-    FormBuilder.prototype.checkbox_tag = function(attribute, options) {
+    FormBuilder.prototype.checkbox = function(attribute, options) {
       return this.input('checkbox', attribute, options);
     };
 
