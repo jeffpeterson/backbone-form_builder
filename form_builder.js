@@ -61,7 +61,7 @@
     };
 
     FormBuilder.prototype.select = function(attribute, choices, options) {
-      var name, select, value;
+      var attrs, name, select, value;
 
       if (choices == null) {
         choices = {};
@@ -77,9 +77,13 @@
       });
       for (value in choices) {
         name = choices[value];
-        select.append(this.new_el('option', {
+        attrs = {
           value: value
-        }, name));
+        };
+        if (this.model.get(attribute) === value) {
+          attrs.selected = "selected";
+        }
+        select.append(this.new_el('option', attrs, name));
       }
       return this.new_el('p', {}, select).html();
     };

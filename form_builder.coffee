@@ -32,7 +32,9 @@ class Backbone.FormBuilder
 
     select = @new_el 'select', name: attribute
     for value, name of choices
-      select.append @new_el('option', value: value, name)
+      attrs = value: value
+      attrs.selected = "selected" if @model.get(attribute) is value
+      select.append @new_el('option', attrs, name)
     @new_el('p', {}, select).html()
 
   input: (type, attribute, options = {}) ->
