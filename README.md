@@ -56,6 +56,7 @@ The available methods are:
 
 * `f.input(type, attribute, options = {})`
 * `f.text_field(attribute, options = {})`
+* `f.checkbox(attribute, options = {})`
 * `f.password_field(attribute, options = {})`
 * `f.label(attribute, body = attribute, options = {})`
 * `f.select(attribute, choices = {}, options = {})`
