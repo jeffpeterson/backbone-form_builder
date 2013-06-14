@@ -53,6 +53,10 @@ class Backbone.FormBuilder
         options.value   = null
 
         @new_el 'textarea', options
+      when 'checkbox'
+        options.checked = "checked" if @model.get(attribute)
+        options.type = "checkbox"
+        @new_el 'input', options
       else
         @new_el 'input', options
 
