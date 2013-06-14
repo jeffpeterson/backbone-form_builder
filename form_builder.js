@@ -109,6 +109,12 @@
             options.content = options.value;
             options.value = null;
             return this.new_el('textarea', options);
+          case 'checkbox':
+            if (this.model.get(attribute)) {
+              options.checked = "checked";
+            }
+            options.type = "checkbox";
+            return this.new_el('input', options);
           default:
             return this.new_el('input', options);
         }
