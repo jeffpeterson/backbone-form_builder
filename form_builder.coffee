@@ -54,7 +54,7 @@ class Backbone.FormBuilder
 
     field = switch type
       when 'textarea'
-        options.content = options.value
+        options.text = options.value
         options.value   = null
 
         @new_el 'textarea', options
