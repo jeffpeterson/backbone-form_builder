@@ -7,9 +7,14 @@ class Backbone.FormBuilder
   text_field:     (attribute, options) -> @input 'text',     attribute, options
   password_field: (attribute, options) -> @input 'password', attribute, options
   text_area:      (attribute, options) -> @input 'textarea', attribute, options
-  checkbox:       (attribute, options) -> @input 'checkbox', attribute, options
+  checkbox:       (attribute, options = {}) ->
+    if @model.get(attribute)
+      options.checked = "checked"
+    else
+      delete options.checked
+    @input 'checkbox', attribute, options
 
-  label:          (attribute, body = attribute, options = {}) ->
+  label: (attribute, body = attribute, options = {}) ->
     _.defaults options,
       class: "#{attribute}_label"
       for: @id_for(attribute)
@@ -53,10 +58,6 @@ class Backbone.FormBuilder
         options.value   = null
 
         @new_el 'textarea', options
-      when 'checkbox'
-        options.checked = "checked" if @model.get(attribute)
-        options.type = "checkbox"
-        @new_el 'input', options
       else
         @new_el 'input', options
 
