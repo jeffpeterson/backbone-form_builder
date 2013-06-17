@@ -110,7 +110,7 @@
       field = (function() {
         switch (type) {
           case 'textarea':
-            options.content = options.value;
+            options.text = options.value;
             options.value = null;
             return this.new_el('textarea', options);
           default:
