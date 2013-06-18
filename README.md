@@ -84,7 +84,13 @@ Renders as:
 </select>
 ```
 
+Nested attributes
+-----
 
+*(tested with [`Backbone-relational`](https://github.com/PaulUithol/Backbone-relational))*
 
+Now, you can use nested attributes for **one-to-one** relationships. For instance, let's suppose you have a client model that has a role relationship and the role has an attribute called *name*. You must be able to access the user's role like this: `user.get("role")`, and it should return a *Role* model. You can do a `text_field` for that role name in this way:
 
+`f.text_field "role[name]"`
 
+For the value, the plugin will call `user.get("role").get("name")`
