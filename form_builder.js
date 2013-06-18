@@ -89,17 +89,32 @@
     };
 
     FormBuilder.prototype.input = function(type, attribute, options) {
-      var field, _ref;
+      var field, last_value, relation, relations, value, _ref;
 
       if (options == null) {
         options = {};
       }
+      relations = attribute.replace(/\]/g, "").split("[");
+      value = (function() {
+        var _i, _len;
+
+        if (relations.length > 0) {
+          last_value = this.model;
+          for (_i = 0, _len = relations.length; _i < _len; _i++) {
+            relation = relations[_i];
+            last_value = last_value.get(relation);
+          }
+          return last_value;
+        } else {
+          return this.model.get(attribute);
+        }
+      }).call(this);
       _.defaults(options, {
         name: attribute,
         "class": attribute,
         placeholder: attribute.split("_").join(" ").capitalize(),
         type: type,
-        value: this.model.get(attribute),
+        value: value,
         id: this.id_for(attribute),
         size: 30
       });

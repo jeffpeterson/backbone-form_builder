@@ -38,12 +38,23 @@ class Backbone.FormBuilder
     @new_el('p', {}, select).html()
 
   input: (type, attribute, options = {}) ->
+
+    # for relations:
+    relations = attribute.replace(/\]/g, "").split("[")
+    value = if relations.length > 0
+      last_value = @model
+      for relation in relations
+        last_value = last_value.get relation
+      last_value
+    else
+      @model.get attribute
+
     _.defaults options,
       name:        attribute
       class:       attribute
       placeholder: attribute.split("_").join(" ").capitalize()
       type:        type
-      value:       @model.get attribute
+      value:       value
       id:          @id_for(attribute)
       size:        30
 
