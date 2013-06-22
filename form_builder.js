@@ -102,7 +102,7 @@
           last_value = this.model;
           for (_i = 0, _len = relations.length; _i < _len; _i++) {
             relation = relations[_i];
-            last_value = last_value.get(relation);
+            last_value = last_value.get && last_value.get(relation) ? last_value.get(relation) : "";
           }
           return last_value;
         } else {

@@ -44,7 +44,7 @@ class Backbone.FormBuilder
     value = if relations.length > 0
       last_value = @model
       for relation in relations
-        last_value = last_value.get relation
+        last_value = if last_value.get and last_value.get(relation) then last_value.get(relation) else ""
       last_value
     else
       @model.get attribute
